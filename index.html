@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random ice cream Generator</title>
+  <script>
+    // Load the JSON file
+    function loadPhrases() {
+      fetch('phrases.json')
+        .then(response => response.json())
+        .then(data => {
+          // Choose a random phrase from the JSON data
+          const randomIndex = Math.floor(Math.random() * data.length);
+          const randomPhrase = data[randomIndex];
+
+          // Update the HTML with the random phrase
+          document.getElementById('phrase').textContent = randomPhrase;
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+  </script>
+</head>
+<body>
+  <h1>Random ice cream Generator</h1>
+  <button onclick="loadPhrases()">Random ice cream Generator</button>
+  <p id="phrase"></p>
+</body>
+</html>
